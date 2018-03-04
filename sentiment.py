@@ -107,13 +107,3 @@ print("negative comments")
 print (negative)
 print("overall review")
 print (average_review)
-
-		
-# print ('Enter the sentence')
-# text=input()
-# result=naive_bayes(text)
-
-# if result['1'] > result['-1']:
-# 	print ('positive')
-# else:
-# 	print ('negative')
