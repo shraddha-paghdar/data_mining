@@ -74,11 +74,19 @@ positive = 0 #initialize positive comments counter
 negative = 0 #initialize negative comments counter
 counter = 0 # for counting number of reviews for a particular product
 overall= 0 #for overall review
-print("Enter ASIN number")
+print("Enter Product Name")
 text=input() #take input
+asin_read=open("asin.csv" , 'r')
+asin_reader = csv.reader(asin_read)
+
+for asin in asin_reader:
+	if asin[1] == text:
+		product_name = asin[0]
+
 cellphone_read=open("cellphone_15000.csv" , 'r') #open csv file to test the model
 reader = csv.reader(cellphone_read) #read the csv file 
-rows = [row for row in reader if row[0] == text] #store only those rows whoes entered ASIN number is same as asin number in csv file
+
+rows = [row for row in reader if row[0] == product_name] #store only those rows whoes entered ASIN number is same as asin number in csv file
 counter = len(list(rows)) #counting total number of reviews for a entered product
 for read in rows: #read those rows whos ASIN number is matched
 	try:		
@@ -99,6 +107,7 @@ print("negative comments")
 print (negative)
 print("overall review")
 print (average_review)
+
 		
 # print ('Enter the sentence')
 # text=input()
