@@ -72,22 +72,11 @@ def naive_bayes(test):
 
 positive = 0 #initialize positive comments counter
 negative = 0 #initialize negative comments counter
-counter = 0 # for counting number of reviews for a particular product
-overall= 0 #for overall review
-print("Enter Product Name")
+print("Enter ASIN number")
 text=input() #take input
-asin_read=open("asin.csv" , 'r')
-asin_reader = csv.reader(asin_read)
-
-for asin in asin_reader:
-	if asin[1] == text:
-		product_name = asin[0]
-
-cellphone_read=open("cellphone_15000.csv" , 'r') #open csv file to test the model
+cellphone_read=open("cellphone_15000).csv" , 'r') #open csv file to test the model
 reader = csv.reader(cellphone_read) #read the csv file 
-
-rows = [row for row in reader if row[0] == product_name] #store only those rows whoes entered ASIN number is same as asin number in csv file
-counter = len(list(rows)) #counting total number of reviews for a entered product
+rows = [row for row in reader if row[0] == text] #store only those rows whoes entered ASIN number is same as asin number in csv file
 for read in rows: #read those rows whos ASIN number is matched
 	try:		
 		text=read[4] #read only review text column from csv file
@@ -96,14 +85,18 @@ for read in rows: #read those rows whos ASIN number is matched
 			positive += 1 #increment the positive counter if comment is positive
 		else:
 			negative += 1 #increment the negative counter if comment is negative
-		overall_review = read[3]
-		overall += float(overall_review) 
-		average_review = overall/counter
 	except IndexError:
 		text='null'
 print("positive comments")
 print (positive)
 print("negative comments")
 print (negative)
-print("overall review")
-print (average_review)
+		
+# print ('Enter the sentence')
+# text=input()
+# result=naive_bayes(text)
+
+# if result['1'] > result['-1']:
+# 	print ('positive')
+# else:
+# 	print ('negative')
